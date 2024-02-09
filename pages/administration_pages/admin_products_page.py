@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver.common.by import By
 
 from ..base_page import BasePage
@@ -16,19 +17,15 @@ class AdminProductPage(BasePage):
     FILTER_BUTTON = (By.XPATH, "//button[contains(text(), 'Filter')]")
     DELETE_BUTTON = (By.XPATH, "//button[@title='Delete']")
 
+    @allure.step("Переход к вкладке '{tab}' в форме добавления продукта")
     def go_to_tab_add_product(self, tab: str):
-        """
-        Переход к вкладке в форме добавления продукта
-        :param tab: название вкладки
-        :return:
-        """
         self.assert_element((By.XPATH, f"//ul[@class='nav nav-tabs']//a[contains(text(), '{tab}')]")).click()
 
+    @allure.step("Создание продукта {product_name}")
     def create_product(self, product_name: str,
                        meta_tag_title: str,
                        model: str,
                        seo: str):
-        """Создание продукта"""
         self.click(self.NEW_PRODUCT_BUTTON)
         self.input_value(self.PRODUCT_NAME_INPUT, product_name)
         self.input_value(self.META_TAG_TITLE_INPUT, meta_tag_title)
@@ -38,6 +35,7 @@ class AdminProductPage(BasePage):
         self.input_value(self.SEO_INPUT, seo)
         self.click(self.SAVE_BUTTON)
 
+    @allure.step("Установка фильтра {product_name}")
     def set_filter_product_name(self, product_name):
         """Установка фильтра"""
         self.input_value(self.FILTER_PRODUCT_NAME_INPUT, product_name)
@@ -45,12 +43,8 @@ class AdminProductPage(BasePage):
         self.click(self.FILTER_BUTTON)
         time.sleep(2)
 
+    @allure.step("Удаление продукта {product_name}")
     def delete_product(self, product_name):
-        """
-        Удаление продукта
-        :param product_name: Название удаяемого продукта
-        :return:
-        """
         product_name = self.assert_element((By.XPATH, f"//table//tbody//td[3][contains(text(), '{product_name}')]"))
         row = product_name.find_element(By.XPATH, "ancestor::tr")
         checkbox = row.find_element(By.XPATH, ".//td//input[@type='checkbox']")

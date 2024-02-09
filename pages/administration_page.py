@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+import allure
 
 from .base_page import BasePage
 
@@ -12,7 +13,8 @@ class AdministrationPage(BasePage):
     LOGOUT_BUTTON = (By.XPATH, "//*[@id='nav-logout']//span")
 
     def login(self, login, password):
-        self.input_value(AdministrationPage.USERNAME_INPUT, login)
-        self.input_value(AdministrationPage.PASSWORD_INPUT, password)
-        self.click(AdministrationPage.SUBMIT_BUTTON)
-        self.wait_title('Dashboard')
+        with allure.step("Авторизация в админке"):
+            self.input_value(AdministrationPage.USERNAME_INPUT, login)
+            self.input_value(AdministrationPage.PASSWORD_INPUT, password)
+            self.click(AdministrationPage.SUBMIT_BUTTON)
+            self.wait_title('Dashboard')
