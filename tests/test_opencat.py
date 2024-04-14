@@ -5,6 +5,9 @@ import allure
 import pytest
 from selenium.webdriver.common.by import By
 
+import sys
+sys.path.append("..")
+
 from ..help import random_email
 from ..pages.administration_page import AdministrationPage
 from ..pages.administration_pages.admin_products_page import AdminProductPage
