@@ -6,7 +6,7 @@ import pytest
 from selenium.webdriver.common.by import By
 
 import sys
-sys.path.append("..")
+sys.path.append(".")
 
 from ..help import random_email
 from ..pages.administration_page import AdministrationPage
