@@ -131,6 +131,5 @@ dmypy.json
 *.json
 *.png
 
-/allure
 /allure-report
 /allure-results
