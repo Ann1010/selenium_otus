@@ -17,7 +17,7 @@ from selenium.webdriver.safari.service import Service as SafariService
 
 def pytest_addoption(parser):
     parser.addoption("--browser_name", default="chrome")
-    parser.addoption("--url", "-U", default="http://192.168.0.133")
+    parser.addoption("--url", "-U", default="http://192.168.0.133:8081")
     parser.addoption("--mobile", action="store_true", default=False)
     parser.addoption("--vnc", action="store_true", default=False)
     parser.addoption("--logs", action="store_true", default=False)

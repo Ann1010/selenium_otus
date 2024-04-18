@@ -5,15 +5,19 @@ import allure
 import pytest
 from selenium.webdriver.common.by import By
 
-from ..help import random_email
-from ..pages.administration_page import AdministrationPage
-from ..pages.administration_pages.admin_products_page import AdminProductPage
-from ..pages.catalog_page import CatalogPage
-from ..pages.main_page import MainPage
-from ..pages.navigation_panel import NavigationPanel
-from ..pages.product_page import ProductPage
-from ..pages.register_page import RegisterPage
-from ..pages.top_panel import TopPanel
+import sys
+
+sys.path.append(".")
+
+from help import random_email
+from pages.administration_page import AdministrationPage
+from pages.administration_pages.admin_products_page import AdminProductPage
+from pages.catalog_page import CatalogPage
+from pages.main_page import MainPage
+from pages.navigation_panel import NavigationPanel
+from pages.product_page import ProductPage
+from pages.register_page import RegisterPage
+from pages.top_panel import TopPanel
 
 
 @pytest.mark.main_page
